@@ -80,12 +80,8 @@
 
 ;;; Load the translator's boot file.
 
-;;; put your tlt path here
-(defparameter *thinlisp-source-path*
-  #p"/home/viper/programming/thinlisp-release/src/")
-
-;(defparameter *tlt-path-string*
-;  "/home/viper/programming/thinlisp-1.0.1/src/tlt/")
+;;; src dir path ; assume boot file load'ed
+(defparameter *thinlisp-source-path* *load-pathname*)
 
 (defparameter *tlt-source-path*
   (merge-pathnames (make-pathname :directory '(:relative "tlt" "lisp"))
@@ -110,12 +106,3 @@
 
 (compile-tlt)
 
-
-
-;;; Define convenience forms for all systems (add your own to this list).
-
-(def-system-convenience-forms lecho)
-
-;;; Translate your system (modify to compile or translate your system).
-
-(translate-lecho)
