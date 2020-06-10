@@ -1,9 +1,9 @@
 #
-# TL Linux Makefile
+# TL Cygnus Makefile
 #
-# Copyright (c) 2011 The ThinLisp Group
+# Copyright (c) 2020 The ThinLisp Group
 
-CC = gcc -o
+CC = gcc -m32 -o
 
 CFLAGS =
 
@@ -32,9 +32,9 @@ clean :
 	-rm *.o
 	-( if [ -f libtl.a ] ; then rm libtl.a ; fi )
 
-libtl.a : makefile-linux $(OBJECTS) $(LIBS)
+libtl.a : makefile-cygnus $(OBJECTS) $(LIBS)
 	-( if [ -f libtl.a ] ; then rm libtl.a ; fi )
 	$(ARCHIVE) libtl.a $(OBJECTS)
 
-%.o : ../c/%.c ../c/%.h makefile-linux ../c/tl.h
+%.o : ../c/%.c ../c/%.h makefile-cygnus ../c/tl.h
 	$(CC) $@ $(CFLAGS) -I ../c $<

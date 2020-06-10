@@ -39,7 +39,7 @@
 ;;; variable MAKE_MODE set to UNIX.
 
 (defparameter makefile-element-alist
-    '((cc           . "gcc -o")
+    '((cc           . "gcc -m32 -o")
       (opt-flags    . "-O2 -fomit-frame-pointer")
       (debug-flags  . "-ggdb3")
       (thread-flags . "-DPTHREAD")
@@ -50,7 +50,7 @@
       (first-dep    . "$<")
       
       (archive      . "ar rsc")
-      (link         . "gcc -o")
+      (link         . "gcc -m32 -o")
       (opt-link     . "-O2")
       (debug-link   . "-g")
       (system-libs  . "")

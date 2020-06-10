@@ -1,9 +1,9 @@
 #
-# TL Macosx Makefile
+# TL Config Makefile
 #
-# Copyright (c) 2011 The ThinLisp Group
+# Copyright (c) 2020 The ThinLisp Group
 
-CC = cc -o
+CC = @CC@
 
 CFLAGS =
 
@@ -17,9 +17,9 @@ else
 CFLAGS += -ggdb3
 endif
 
-CFLAGS += -pipe -ansi -pedantic -W -Wall -c
+CFLAGS += @CFLAGS@ -pipe -ansi -pedantic -W -Wall -c
 
-ARCHIVE = ar -r -c -u
+ARCHIVE = ar rsc
 OBJECTS =  tl.o boot.o stubs.o tl-types.o \
         inline.o tl-prim.o do.o format.o input.o \
         tl-basics.o loop.o apply.o generic-math.o generic-prim.o \
@@ -32,10 +32,9 @@ clean :
 	-rm *.o
 	-( if [ -f libtl.a ] ; then rm libtl.a ; fi )
 
-libtl.a : makefile-macosx $(OBJECTS) $(LIBS)
+libtl.a : makefile.config $(OBJECTS) $(LIBS)
 	-( if [ -f libtl.a ] ; then rm libtl.a ; fi )
 	$(ARCHIVE) libtl.a $(OBJECTS)
-	ranlib libtl.a
 
-%.o : ../c/%.c ../c/%.h makefile-macosx ../c/tl.h
+%.o : ../c/%.c ../c/%.h makefile.config ../c/tl.h
 	$(CC) $@ $(CFLAGS) -I ../c $<

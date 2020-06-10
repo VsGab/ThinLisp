@@ -1,5 +1,8 @@
 tlt/dev/
 **/macro/
 **/bin/
+!tl/bin/
 **/opt/
 **/c/
+!tl/c/
+**/makefile.config
