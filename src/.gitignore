@@ -2,6 +2,8 @@ tlt/dev/
 **/macro/
 **/bin/
 !tl/bin/
+tl/bin/*.o
+tl/bin/*.a
 **/opt/
 **/c/
 !tl/c/
